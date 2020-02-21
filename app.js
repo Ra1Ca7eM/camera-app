@@ -1,7 +1,53 @@
 // Set constraints for the video stream
 var constraints = { video: { facingMode: "user" }, audio: false };
-var  amountOfCameras = DetectRTC.videoInputDevices.length;
+var  amountOfCameras = 0;
 var currentFacingMode = 'environment';
+
+document.addEventListener('DOMContentLoaded', function(event) {
+  // do some WebRTC checks before creating the interface
+  DetectRTC.load(function() {
+    // do some checks
+    if (DetectRTC.isWebRTCSupported == false) {
+      alert(
+        'Please use Chrome, Firefox, iOS 11, Android 5 or higher, Safari 11 or higher',
+      );
+    } else {
+      if (DetectRTC.hasWebcam == false) {
+        alert('Please install an external webcam device.');
+      } else {
+        amountOfCameras = DetectRTC.videoInputDevices.length;
+
+        function cameraStart();
+      }
+    }
+
+    console.log(
+      'RTC Debug info: ' +
+        '\n OS:                   ' +
+        DetectRTC.osName +
+        ' ' +
+        DetectRTC.osVersion +
+        '\n browser:              ' +
+        DetectRTC.browser.fullVersion +
+        ' ' +
+        DetectRTC.browser.name +
+        '\n is Mobile Device:     ' +
+        DetectRTC.isMobileDevice +
+        '\n has webcam:           ' +
+        DetectRTC.hasWebcam +
+        '\n has permission:       ' +
+        DetectRTC.isWebsiteHasWebcamPermission +
+        '\n getUserMedia Support: ' +
+        DetectRTC.isGetUserMediaSupported +
+        '\n isWebRTC Supported:   ' +
+        DetectRTC.isWebRTCSupported +
+        '\n WebAudio Supported:   ' +
+        DetectRTC.isAudioContextSupported +
+        '\n is Mobile Device:     ' +
+        DetectRTC.isMobileDevice,
+    );
+  });
+});
 // Define constants
 const cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),
