@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
         alert('Please install an external webcam device.');
       } else {
         amountOfCameras = DetectRTC.videoInputDevices.length;
-
+        
+        cameraStart();
         
       }
     }
