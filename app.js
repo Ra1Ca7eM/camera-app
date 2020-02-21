@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
       } else {
         amountOfCameras = DetectRTC.videoInputDevices.length;
 
-        function cameraStart();
+        
       }
     }
 
