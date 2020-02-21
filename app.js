@@ -1,6 +1,7 @@
 // Set constraints for the video stream
 var constraints = { video: { facingMode: "user" }, audio: false };
 var  amountOfCameras = DetectRTC.videoInputDevices.length;
+var currentFacingMode = 'environment';
 // Define constants
 const cameraView = document.querySelector("#camera--view"),
     cameraOutput = document.querySelector("#camera--output"),
